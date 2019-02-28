@@ -6,6 +6,9 @@ package de.bytefish.multitenancy.web.configuration;
 
 import de.bytefish.multitenancy.web.filters.TenantNameFilter;
 import de.bytefish.multitenancy.web.resources.CustomerResource;
+import de.bytefish.multitenancy.web.resources.UserLoginResource;
+import de.bytefish.multitenancy.web.resources.UserRegistrationResource;
+
 import org.glassfish.jersey.server.ResourceConfig;
 import org.springframework.stereotype.Component;
 
@@ -22,6 +25,8 @@ public class JerseyConfig extends ResourceConfig {
 
         // Register the Resources:
         register(CustomerResource.class);
+        register(UserRegistrationResource.class);
+        register(UserLoginResource.class);
 
         // Uncomment to disable WADL Generation:
         //property("jersey.config.server.wadl.disableWadl", true);

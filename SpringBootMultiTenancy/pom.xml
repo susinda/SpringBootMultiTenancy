@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>de.bytefish</groupId>
-    <artifactId>multitenancy</artifactId>
+    <artifactId>multitenancy-1</artifactId>
     <version>0.1</version>
 
     <build>
@@ -53,6 +53,19 @@
             <artifactId>HikariCP</artifactId>
             <version>2.7.2</version>
         </dependency>
+        
+         <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+        
+        <!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-crypto -->
+		<dependency>
+		    <groupId>org.springframework.security</groupId>
+		    <artifactId>spring-security-crypto</artifactId>
+		    <version>3.1.0.RELEASE</version>
+		</dependency>
 
     </dependencies>
     
