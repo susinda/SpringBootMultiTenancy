@@ -3,11 +3,10 @@
 
 package de.bytefish.multitenancy.repositories;
 
-
 import org.springframework.data.repository.CrudRepository;
-import de.bytefish.multitenancy.model.ApplicationUser;
+import de.bytefish.multitenancy.model.Token;
 
-public interface IUserRepository extends CrudRepository<ApplicationUser, Long> {
-	
-	public ApplicationUser findByEmail(String email);
+public interface ITokenRepository extends CrudRepository<Token, Long> {
+	public Token findByUserEmail(String email);
+	public Token findByToken(String token);
 }

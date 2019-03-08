@@ -1,6 +1,6 @@
-package de.bytefish.multitenancy.web.resources;
+package de.bytefish.multitenancy.web.model;
 
-public class LoginResponse {
+public class StringResponse {
 	
 	String result;
 

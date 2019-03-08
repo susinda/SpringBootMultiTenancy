@@ -4,9 +4,10 @@
 package de.bytefish.multitenancy.web.configuration;
 
 
+import de.bytefish.multitenancy.JWTAuthenticationFilter;
 import de.bytefish.multitenancy.web.filters.TenantNameFilter;
-import de.bytefish.multitenancy.web.resources.CustomerResource;
-import de.bytefish.multitenancy.web.resources.UserLoginResource;
+import de.bytefish.multitenancy.web.resources.AdminMgtResource;
+import de.bytefish.multitenancy.web.resources.UserProfileResource;
 import de.bytefish.multitenancy.web.resources.UserRegistrationResource;
 
 import org.glassfish.jersey.server.ResourceConfig;
@@ -22,11 +23,13 @@ public class JerseyConfig extends ResourceConfig {
 
         // Register the Filters:
         register(TenantNameFilter.class);
+        register(JWTAuthenticationFilter.class);
 
         // Register the Resources:
-        register(CustomerResource.class);
         register(UserRegistrationResource.class);
-        register(UserLoginResource.class);
+        register(AdminMgtResource.class);
+        register(UserProfileResource.class);
+
 
         // Uncomment to disable WADL Generation:
         //property("jersey.config.server.wadl.disableWadl", true);

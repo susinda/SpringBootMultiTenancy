@@ -3,8 +3,11 @@
 
 package de.bytefish.multitenancy.repositories;
 
-import de.bytefish.multitenancy.model.Customer;
 import org.springframework.data.repository.CrudRepository;
 
-public interface ICustomerRepository extends CrudRepository<Customer, Long> {
+import de.bytefish.multitenancy.model.Tenant;
+
+public interface ITenantRepository extends CrudRepository<Tenant, Long> {
+	public Tenant findByTenantName(String name);
+	public Tenant findByAdminEmail(String adminEmail);
 }
