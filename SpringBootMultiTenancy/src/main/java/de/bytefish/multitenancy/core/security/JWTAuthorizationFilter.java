@@ -1,4 +1,4 @@
-package de.bytefish.multitenancy;
+package de.bytefish.multitenancy.core.security;
 
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
@@ -7,22 +7,32 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
+
+import de.bytefish.multitenancy.model.ApplicationRole;
+import de.bytefish.multitenancy.model.ApplicationUser;
+import de.bytefish.multitenancy.repositories.IUserRepository;
+
+import static de.bytefish.multitenancy.core.security.JwtSecurityConstants.HEADER_STRING;
+import static de.bytefish.multitenancy.core.security.JwtSecurityConstants.SECRET;
+import static de.bytefish.multitenancy.core.security.JwtSecurityConstants.TOKEN_PREFIX;
+
 import java.io.IOException;
 import java.util.ArrayList;
-
-import static de.bytefish.multitenancy.SecurityConstants.HEADER_STRING;
-import static de.bytefish.multitenancy.SecurityConstants.SECRET;
-import static de.bytefish.multitenancy.SecurityConstants.TOKEN_PREFIX;
+import java.util.List;
 
 public class JWTAuthorizationFilter extends BasicAuthenticationFilter {
 
-    public JWTAuthorizationFilter(AuthenticationManager authManager) {
+	IUserRepository userRepo;
+    public JWTAuthorizationFilter(AuthenticationManager authManager, IUserRepository userRepo) {
         super(authManager);
+        this.userRepo = userRepo;
     }
 
     @Override
@@ -52,7 +62,15 @@ public class JWTAuthorizationFilter extends BasicAuthenticationFilter {
                     .getSubject();
 
             if (user != null) {
-                return new UsernamePasswordAuthenticationToken(user, null, new ArrayList<>());
+            	ApplicationUser aUser = userRepo.findByEmail(user);
+	        	List<GrantedAuthority> authorityList = new ArrayList<GrantedAuthority>();
+            	if (aUser != null) {
+		              for (ApplicationRole role : aUser.getRoles()) {
+		              	SimpleGrantedAuthority sga = new SimpleGrantedAuthority(role.getName());
+		              	authorityList.add(sga);
+		            }
+            	}
+                return new UsernamePasswordAuthenticationToken(user, null, authorityList);
             }
             return null;
         }

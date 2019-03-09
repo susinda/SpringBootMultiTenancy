@@ -3,7 +3,6 @@
 
 package de.bytefish.multitenancy.routing;
 
-import de.bytefish.multitenancy.core.ThreadLocalStorage;
 import org.springframework.jdbc.datasource.lookup.AbstractRoutingDataSource;
 
 public class TenantAwareRoutingSource extends AbstractRoutingDataSource {

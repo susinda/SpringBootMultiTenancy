@@ -1,4 +1,4 @@
-package de.bytefish.multitenancy;
+package de.bytefish.multitenancy.core;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -20,7 +20,7 @@ import de.bytefish.multitenancy.repositories.IRoleRepository;
 import de.bytefish.multitenancy.repositories.ITenantRepository;
 import de.bytefish.multitenancy.repositories.ITokenRepository;
 import de.bytefish.multitenancy.repositories.IUserRepository;
-import de.bytefish.multitenancy.web.model.StringResponse;
+import de.bytefish.multitenancy.web.dto.StringResponse;
 
 @Service
 public class RegistrationService  {
@@ -74,10 +74,10 @@ public class RegistrationService  {
         tenant.setVerified(false);
         tenantRepository.save(tenant);
         
-        ApplicationRole adminRole = roleRepository.findByName("ADMIN");
+        ApplicationRole adminRole = roleRepository.findByName("ROLE_ADMIN");
         if (adminRole == null ) {
         	adminRole = new ApplicationRole();
-        	adminRole.setName("ADMIN");
+        	adminRole.setName("ROLE_ADMIN");
             roleRepository.save(adminRole);
         }
         
@@ -129,10 +129,10 @@ public class RegistrationService  {
            return sr;
         }
         
-        ApplicationRole userRole = roleRepository.findByName("USER");
+        ApplicationRole userRole = roleRepository.findByName("ROLE_USER");
         if (userRole == null ) {
         	userRole = new ApplicationRole();
-        	userRole.setName("USER");
+        	userRole.setName("ROLE_USER");
         	roleRepository.save(userRole);
         }
         List<ApplicationRole> roles = new ArrayList<ApplicationRole>();

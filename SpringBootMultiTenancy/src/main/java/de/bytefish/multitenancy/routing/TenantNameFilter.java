@@ -1,14 +1,15 @@
 // Copyright (c) Philipp Wagner. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
-package de.bytefish.multitenancy.web.filters;
-
-import de.bytefish.multitenancy.core.ThreadLocalStorage;
+package de.bytefish.multitenancy.routing;
 
 import javax.ws.rs.container.ContainerRequestContext;
 import javax.ws.rs.container.ContainerRequestFilter;
 import javax.ws.rs.core.MultivaluedMap;
 import javax.ws.rs.ext.Provider;
+
+import de.bytefish.multitenancy.routing.ThreadLocalStorage;
+
 import java.io.IOException;
 
 @Provider

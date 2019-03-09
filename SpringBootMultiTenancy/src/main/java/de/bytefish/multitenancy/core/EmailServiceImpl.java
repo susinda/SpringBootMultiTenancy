@@ -1,4 +1,4 @@
-package de.bytefish.multitenancy;
+package de.bytefish.multitenancy.core;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;

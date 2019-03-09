@@ -1,4 +1,4 @@
-package de.bytefish.multitenancy.web.model;
+package de.bytefish.multitenancy.web.dto;
 
 public class VerificationRequestDTO {
 	

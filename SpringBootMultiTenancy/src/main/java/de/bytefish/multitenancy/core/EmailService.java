@@ -1,4 +1,4 @@
-package de.bytefish.multitenancy;
+package de.bytefish.multitenancy.core;
 
 import org.springframework.mail.SimpleMailMessage;
 

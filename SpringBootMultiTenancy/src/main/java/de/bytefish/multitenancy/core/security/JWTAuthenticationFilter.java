@@ -1,4 +1,4 @@
-package de.bytefish.multitenancy;
+package de.bytefish.multitenancy.core.security;
 
 import com.auth0.jwt.JWT;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -22,10 +22,10 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import static com.auth0.jwt.algorithms.Algorithm.HMAC512;
-import static de.bytefish.multitenancy.SecurityConstants.EXPIRATION_TIME;
-import static de.bytefish.multitenancy.SecurityConstants.HEADER_STRING;
-import static de.bytefish.multitenancy.SecurityConstants.SECRET;
-import static de.bytefish.multitenancy.SecurityConstants.TOKEN_PREFIX;
+import static de.bytefish.multitenancy.core.security.JwtSecurityConstants.EXPIRATION_TIME;
+import static de.bytefish.multitenancy.core.security.JwtSecurityConstants.HEADER_STRING;
+import static de.bytefish.multitenancy.core.security.JwtSecurityConstants.SECRET;
+import static de.bytefish.multitenancy.core.security.JwtSecurityConstants.TOKEN_PREFIX;
 
 public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 	

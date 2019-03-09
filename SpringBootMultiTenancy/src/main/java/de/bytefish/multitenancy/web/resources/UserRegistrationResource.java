@@ -3,12 +3,12 @@
 
 package de.bytefish.multitenancy.web.resources;
 
-import de.bytefish.multitenancy.RegistrationService;
+import de.bytefish.multitenancy.core.RegistrationService;
 import de.bytefish.multitenancy.model.ApplicationUser;
 import de.bytefish.multitenancy.repositories.IUserRepository;
-import de.bytefish.multitenancy.web.model.RegisterRequestDTO;
-import de.bytefish.multitenancy.web.model.StringResponse;
-import de.bytefish.multitenancy.web.model.VerificationRequestDTO;
+import de.bytefish.multitenancy.web.dto.RegisterRequestDTO;
+import de.bytefish.multitenancy.web.dto.StringResponse;
+import de.bytefish.multitenancy.web.dto.VerificationRequestDTO;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

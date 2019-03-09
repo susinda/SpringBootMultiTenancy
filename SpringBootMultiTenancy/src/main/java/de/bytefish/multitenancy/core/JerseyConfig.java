@@ -1,11 +1,11 @@
 // Copyright (c) Philipp Wagner. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
-package de.bytefish.multitenancy.web.configuration;
+package de.bytefish.multitenancy.core;
 
 
-import de.bytefish.multitenancy.JWTAuthenticationFilter;
-import de.bytefish.multitenancy.web.filters.TenantNameFilter;
+import de.bytefish.multitenancy.core.security.JWTAuthenticationFilter;
+import de.bytefish.multitenancy.routing.TenantNameFilter;
 import de.bytefish.multitenancy.web.resources.AdminMgtResource;
 import de.bytefish.multitenancy.web.resources.UserProfileResource;
 import de.bytefish.multitenancy.web.resources.UserRegistrationResource;
@@ -13,9 +13,7 @@ import de.bytefish.multitenancy.web.resources.UserRegistrationResource;
 import org.glassfish.jersey.server.ResourceConfig;
 import org.springframework.stereotype.Component;
 
-/**
- * Jersey Configuration (Resources, Modules, Filters, ...)
- */
+
 @Component
 public class JerseyConfig extends ResourceConfig {
 
